@@ -1,0 +1,54 @@
+**判断是否为素数**
+
+```java
+ static boolean isPrime(int n) {
+        if (n <= 1) return false;              // 1 或更小的数字不是素数
+        if (n == 2 || n == 3) return true;     // 2 和 3 是素数
+        if (n % 2 == 0 || n % 3 == 0) return false;  // 排除 2 和 3 的倍数
+        for (int i = 5; i * i <= n; i += 6) {  // 从 5 开始，每次跳过 6，检查 6k ± 1
+            if (n % i == 0 || n % (i + 2) == 0) return false; // 如果 n 能被 i 或 (i + 2) 整除，则不是素数
+        }
+        return true;  // 如果没有发现能整除的数，返回 true，表示 n 是素数
+    }
+}
+```
+
+**持续接收**
+
+**多重排序**
+
+```java
+ // 对于只有一个列表排序时也可以直接重写Comparator而不用在Student类中实现Comparable接口
+        Collections.sort(list4,new Comparator<Student>(){
+            public int compare(Student o1,Student o2){
+                // 先按总分降序排序
+                if(o1.sum != o2.sum)    return o2.sum - o1.sum;
+                // 总分相同按德分降序
+                else if(o1.MoralScore != o2.MoralScore)    return o2.MoralScore - o1.MoralScore;
+                // 若德分也并列，则按准考证号的升序输出
+                else return o1.CandidateNumber - o2.CandidateNumber;
+            }
+        });
+```
+
+**集合**
+
+**补充前导0输出整型**
+
+```java
+System.out.printf("%05d",sum);//补充0到5位数；
+```
+
+**辗转相除法求最大公因数**
+
+```java
+public static int gcd(int a, int b) {
+while (b != 0) {
+int temp = b;
+b = a % b;
+a = temp;
+}
+return a;
+}
+```
+
